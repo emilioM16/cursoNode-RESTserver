@@ -62,7 +62,7 @@ app.put('/usuario/:id', [verificaToken, verificaAdmin_Role],(req, res) => {
     let id = req.params.id;
     let body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']);
     const config = {
-        new: true,
+        new: true, //devuelve el documento modificado
         runValidators: true
     }
     Usuario.findByIdAndUpdate(id, body, config, (err, usuarioDB) => {
