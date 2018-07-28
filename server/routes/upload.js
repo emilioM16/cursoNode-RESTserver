@@ -51,8 +51,8 @@ app.put('/upload/:tipo/:id', (req, res)=>{
 
     //Cambiar nombre archivo
     let nombreArchivo = `${ id }-${ new Date().getMilliseconds() }.${ extension }`;
-
-    archivo.mv(`../uploads/${ tipo }/${ nombreArchivo }`, (err) => {
+    let pathArchivo = path.resolve(__dirname, `../../uploads/${ tipo }/${ nombreArchivo }`);
+    archivo.mv(pathArchivo, (err) => {
         if (err){
           return res.status(500).json({
               ok:false,
